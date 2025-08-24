@@ -1,11 +1,11 @@
 <script lang="ts">
-    import type { Book } from "$lib/types";
+    import type { Game } from "$lib/types";
 
     interface Props {
-        book: Book;
+        game: Game;
     }
 
-    let { book }: Props = $props();
+    let { game }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -17,18 +17,18 @@
     <div class="expanded-card">
         <div>
             <img
-                src={book.cover_image}
+                src={game.cover_image}
                 class="cover-image"
-                class:explicit={book.explicit}
-                alt={`Cover image of ${book.title}`}
+                class:explicit={game.explicit}
+                alt={`Cover image of ${game.title}`}
             />
         </div>
         <div class="book-info">
-            <h2 class="book-title">{book.title}</h2>
-            <p class="book-author">{book.author}</p>
-            <div class="read-status">{book.status}</div>
+            <h2 class="book-title">{game.title}</h2>
+            <p class="book-author">{game.developer}</p>
+            <div class="read-status">{game.status}</div>
             <div class="book-genres">
-                {#each book.genres.slice(0, 5) as genre (genre)}
+                {#each game.genres.slice(0, 5) as genre (genre)}
                     <span class="book-genre">
                         <button>{genre}</button>
                     </span>
@@ -36,7 +36,7 @@
             </div>
 
             <div class="book-tags">
-                {#each book.tags.slice(0, 5) as tag (tag)}
+                {#each game.tags.slice(0, 5) as tag (tag)}
                     <span class="book-tag">
                         <button>{tag}</button>
                     </span>
@@ -45,10 +45,10 @@
 
             <div class="book-rating">
                 <span class="stars">
-                    {#each Array(book.rating) as _, star}
+                    {#each Array(game.rating) as _, star}
                         <span
                             class="star"
-                            class:filled={star + 1 <= book.rating}>★</span
+                            class:filled={star + 1 <= game.rating}>★</span
                         >
                     {/each}
                 </span>
@@ -59,13 +59,16 @@
         <div>Extra Info:</div>
         <div class="item-metadata">
             <h3>Description:</h3>
-            <p>{book.description}</p>
+            <p>{game.description}</p>
 
             <h3>My Thoughts:</h3>
-            <p>{book.my_thoughts}</p>
+            <p>{game.my_thoughts}</p>
+
+            <h3>My Progress %:</h3>
+            <p>{game.percent}%</p>
 
             <h3>Links:</h3>
-            {#each Object.entries(book.links) as [name, url]}
+            {#each Object.entries(game.links) as [name, url]}
                 <a
                     href={url}
                     target="_blank"

@@ -47,14 +47,7 @@
     });
 </script>
 
-<input
-    bind:value={title}
-    onchange={async () => {
-        items = await search_books();
-    }}
-    placeholder="Search title"
-    type="text"
-/>
+<input bind:value={title} placeholder="Search title" type="text" />
 
 <TagsBar
     {tags}

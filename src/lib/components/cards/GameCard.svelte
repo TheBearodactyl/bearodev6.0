@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { delete_book } from "$lib/api/books";
-    import type { Book } from "$lib/types";
+    import type { Game } from "$lib/types";
 
     interface Props {
-        book: Book;
+        game: Game;
         on_click: () => void;
         on_select_genre: (genre: string) => Promise<void>;
         on_select_tag: (tag: string) => Promise<void>;
     }
 
-    let { book, on_click, on_select_genre, on_select_tag }: Props = $props();
+    let { game, on_click, on_select_genre, on_select_tag }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -19,23 +18,23 @@
         <img
             role="button"
             tabindex="0"
-            src={book.cover_image}
+            src={game.cover_image}
             class="cover-image"
-            class:explicit={book.explicit}
-            alt={`Cover image of ${book.title}`}
+            class:explicit={game.explicit}
+            alt={`Cover image of ${game.title}`}
             onclick={() => {
                 on_click();
             }}
         />
     </div>
     <div class="book-info">
-        <h2 class="book-title">{book.title}</h2>
-        <p class="book-author">{book.author}</p>
-        <div class="read-status">{book.status}</div>
+        <h2 class="book-title">{game.title}</h2>
+        <p class="book-author">{game.developer}</p>
+        <div class="read-status">{game.status}</div>
 
         <h4>Genres:</h4>
         <div class="book-genres">
-            {#each book.genres.slice(0, 5) as genre (genre)}
+            {#each game.genres.slice(0, 5) as genre (genre)}
                 <span class="book-genre">
                     <button
                         onclick={async () => {
@@ -48,7 +47,7 @@
 
         <h4>Tags:</h4>
         <div class="book-tags">
-            {#each book.tags.slice(0, 5) as tag (tag)}
+            {#each game.tags.slice(0, 5) as tag (tag)}
                 <span class="book-tag">
                     <button
                         onclick={async () => {
@@ -61,22 +60,16 @@
 
         <div class="book-rating">
             <span class="stars">
-                {#each Array(book.rating) as _, star}
+                {#each Array(game.rating) as _, star}
                     <span
                         class="star"
-                        class:filled={star + 1 <= book.rating}>★</span
+                        class:filled={star + 1 <= game.rating}>★</span
                     >
                 {/each}
             </span>
             <span class="rating-text"> </span>
         </div>
     </div>
-
-    <button
-        onclick={async () => {
-            await delete_book(book._id.$oid);
-        }}>Delete</button
-    >
 </div>
 
 <style>
