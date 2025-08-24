@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "getting latest version of site code"
+git pull
+
 if sudo -l &>/dev/null; then
   echo "restarting site server..."
 else
