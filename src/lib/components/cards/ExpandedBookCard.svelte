@@ -14,54 +14,56 @@
     tabindex="0"
     class="book-card"
 >
-    <div>
-        <img
-            src={book.cover_image}
-            class="cover-image"
-            class:explicit={book.explicit}
-            alt={`Cover image of ${book.title}`}
-        />
-    </div>
-    <div class="book-info">
-        <h2 class="book-title">{book.title}</h2>
-        <p class="book-author">{book.author}</p>
-        <div class="read-status">{book.status}</div>
-        <div class="book-genres">
-            {#each book.genres.slice(0, 5) as genre (genre)}
-                <span class="book-genre">
-                    <button>{genre}</button>
-                </span>
-            {/each}
+    <div class="expanded-card">
+        <div>
+            <img
+                src={book.cover_image}
+                class="cover-image"
+                class:explicit={book.explicit}
+                alt={`Cover image of ${book.title}`}
+            />
         </div>
-
-        <div class="book-tags">
-            {#each book.tags.slice(0, 5) as tag (tag)}
-                <span class="book-tag">
-                    <button>{tag}</button>
-                </span>
-            {/each}
-        </div>
-
-        <div class="book-rating">
-            <span class="stars">
-                {#each Array(book.rating) as _, star}
-                    <span
-                        class="star"
-                        class:filled={star + 1 <= book.rating}>★</span
-                    >
+        <div class="book-info">
+            <h2 class="book-title">{book.title}</h2>
+            <p class="book-author">{book.author}</p>
+            <div class="read-status">{book.status}</div>
+            <div class="book-genres">
+                {#each book.genres.slice(0, 5) as genre (genre)}
+                    <span class="book-genre">
+                        <button>{genre}</button>
+                    </span>
                 {/each}
-            </span>
-            <span class="rating-text"> </span>
+            </div>
+
+            <div class="book-tags">
+                {#each book.tags.slice(0, 5) as tag (tag)}
+                    <span class="book-tag">
+                        <button>{tag}</button>
+                    </span>
+                {/each}
+            </div>
+
+            <div class="book-rating">
+                <span class="stars">
+                    {#each Array(book.rating) as _, star}
+                        <span
+                            class="star"
+                            class:filled={star + 1 <= book.rating}>★</span
+                        >
+                    {/each}
+                </span>
+                <span class="rating-text"> </span>
+            </div>
         </div>
-    </div>
 
-    <div>Extra Info:</div>
-    <div class="item-metadata">
-        <h3>Description:</h3>
-        <p>{book.description}</p>
+        <div>Extra Info:</div>
+        <div class="item-metadata">
+            <h3>Description:</h3>
+            <p>{book.description}</p>
 
-        <h3>My Thoughts:</h3>
-        <p>{book.my_thoughts}</p>
+            <h3>My Thoughts:</h3>
+            <p>{book.my_thoughts}</p>
+        </div>
     </div>
 </div>
 
@@ -83,7 +85,7 @@
     }
 
     .cover-image {
-        width: 50%;
+        width: 25%;
         height: fit-content;
         object-fit: cover;
     }

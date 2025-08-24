@@ -11,12 +11,14 @@
     let items: Book[] = $state([]);
     let genres: string[] = $state([]);
     let tags: string[] = $state([]);
+    let title: string = $state("");
 
     async function search_books() {
         try {
             const query: BookQuery = {
                 genres: genres,
                 tags: tags,
+                title: title,
             };
 
             const response = await fetch(
@@ -44,6 +46,8 @@
         items = await search_books();
     });
 </script>
+
+<input bind:value={title} placeholder="Search title" type="text" />
 
 <TagsBar
     {tags}
