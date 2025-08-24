@@ -13,6 +13,7 @@
     role="button"
     tabindex="0"
     class="book-card"
+    style="border-color: {book.color};"
 >
     <div class="expanded-card">
         <div>
@@ -83,8 +84,14 @@
 <style>
     .book-card {
         display: flex;
+        color: white;
+        background-color: black;
+        border-radius: 12px;
+        border: 2px solid;
+        border-color: pink;
         flex-direction: column;
         overflow: hidden;
+        padding: 2rem;
         position: relative;
         width: 100%;
     }
