@@ -1,7 +1,7 @@
 export const API_BASE = "https://api.bearodactyl.dev"
 
 export interface Book {
-	_id: string;
+	_id: { "$oid": string };
 	title: string;
 	author: string;
 	genres: string[];

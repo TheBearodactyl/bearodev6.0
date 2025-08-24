@@ -1,35 +1,42 @@
 <script lang="ts">
-	import BookCard from '$lib/components/cards/BookCard.svelte';
-	import { API_BASE, type Book } from '$lib/types';
-	import { error } from '@sveltejs/kit';
-	import { onMount } from 'svelte';
+    import { goto } from "$app/navigation";
+    import BookCard from "$lib/components/cards/BookCard.svelte";
+    import { API_BASE, type Book } from "$lib/types";
+    import { error } from "@sveltejs/kit";
+    import { onMount } from "svelte";
 
-	let items: Book[] = $state([]);
+    let items: Book[] = $state([]);
 
-	onMount(async () => {
-		try {
-			const response = await fetch(`${API_BASE}/read-watch/search`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			});
+    onMount(async () => {
+        try {
+            const response = await fetch(`${API_BASE}/read-watch/search`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-			if (!response.ok) {
-				error(500, `${response.statusText}`);
-			}
+            if (!response.ok) {
+                error(500, `${response.statusText}`);
+            }
 
-			items = await response.json();
-		} catch (err) {
-			console.log(err);
-		}
-	});
+            console.log(response.text);
+            items = await response.json();
+        } catch (err) {
+            console.log(err);
+        }
+    });
 </script>
 
 <div class="read-watch-container">
-	{#each items as book}
-		<BookCard {book}></BookCard>
-	{/each}
+    {#each items as book}
+        <BookCard
+            on_click={() => {
+                goto(`/lists/read-watch/${book._id.$oid}`);
+            }}
+            {book}
+        ></BookCard>
+    {/each}
 </div>
 
 <style>
@@ -37,6 +44,7 @@
         column-count: 5;
         column-gap: 3rem;
         width: 100%;
+        padding: 2rem;
         position: relative;
     }
 </style>

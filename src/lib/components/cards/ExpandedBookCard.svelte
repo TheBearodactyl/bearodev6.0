@@ -3,10 +3,9 @@
 
     interface Props {
         book: Book;
-        on_click: () => void;
     }
 
-    let { book, on_click }: Props = $props();
+    let { book }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -14,9 +13,6 @@
     role="button"
     tabindex="0"
     class="book-card"
-    onclick={() => {
-        on_click()
-    }}
 >
     <div>
         <img
@@ -75,27 +71,19 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 50%;
+        height: 100%;
     }
 
     .cover-image {
-        width: 100%;
+        width: 50%;
         height: fit-content;
         object-fit: cover;
     }
 
-    .cover-image.explicit {
-        filter: blur(10px);
-        transition: all 0.53s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .cover-image.explicit:hover {
-        filter: blur(0px);
-    }
-
-    .book-tags, .book-genres {
+    .book-tags,
+    .book-genres {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.212rem;
+        gap: 0.312rem;
     }
 </style>
