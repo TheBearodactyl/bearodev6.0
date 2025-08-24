@@ -1,6 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import BookCard from "$lib/components/cards/BookCard.svelte";
+    import GenresBar from "$lib/components/inputs/GenresBar.svelte";
     import TagsBar from "$lib/components/inputs/TagsBar.svelte";
     import { API_BASE, type Book, type BookQuery } from "$lib/types";
     import { build_rw_search_params } from "$lib/utils/api";
@@ -48,6 +49,13 @@
     {tags}
     on_click_tag={async (tag: string) => {
         tags = tags.filter((t) => t !== tag);
+        items = await search_books();
+    }}
+/>
+<GenresBar
+    {genres}
+    on_click_genre={async (genre: string) => {
+        genres = genres.filter((g) => g !== genre);
         items = await search_books();
     }}
 />
