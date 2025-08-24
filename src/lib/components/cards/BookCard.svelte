@@ -67,6 +67,7 @@
         overflow: hidden;
         position: relative;
         width: 100%;
+        margin-bottom: 2rem;
     }
 
     .book-card::after {
