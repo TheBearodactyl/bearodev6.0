@@ -23,7 +23,7 @@
         />
     </div>
     <div class="book-info">
-        <h class="book-title">{book.title}</h>
+        <h2 class="book-title">{book.title}</h2>
         <p class="book-author">{book.author}</p>
         <div class="read-status">{book.status}</div>
         <div class="book-genres">
@@ -57,10 +57,10 @@
 
     <div>Extra Info:</div>
     <div class="item-metadata">
-        <h>Description:</h>
+        <h3>Description:</h3>
         <p>{book.description}</p>
 
-        <h>My Thoughts:</h>
+        <h3>My Thoughts:</h3>
         <p>{book.my_thoughts}</p>
     </div>
 </div>

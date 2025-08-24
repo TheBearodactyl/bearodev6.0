@@ -26,7 +26,7 @@
         />
     </div>
     <div class="book-info">
-        <h class="book-title">{book.title}</h>
+        <h2 class="book-title">{book.title}</h2>
         <p class="book-author">{book.author}</p>
         <div class="read-status">{book.status}</div>
         <div class="book-genres">
