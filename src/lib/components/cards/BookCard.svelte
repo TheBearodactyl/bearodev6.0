@@ -83,10 +83,16 @@
     .book-card {
         display: flex;
         flex-direction: column;
+        color: white;
+        background-color: black;
+        border-radius: 12px;
+        border: 2px solid;
+        border-color: pink;
+        padding: 1rem;
         overflow: hidden;
         position: relative;
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .book-card::after {

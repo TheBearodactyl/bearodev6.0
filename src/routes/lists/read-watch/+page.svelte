@@ -97,7 +97,7 @@
 <style>
     .read-watch-container {
         column-count: 5;
-        column-gap: 3rem;
+        column-gap: 1rem;
         width: 100%;
         padding: 2rem;
         position: relative;
