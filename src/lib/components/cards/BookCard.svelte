@@ -68,14 +68,13 @@
                     >
                 {/each}
             </span>
-            <span class="rating-text"> </span>
+            <span class="rating-text">({book.rating}/5)</span>
         </div>
     </div>
 
     <button
         onclick={async () => {
             await delete_book(book._id.$oid);
-            
         }}>Delete</button
     >
 </div>
