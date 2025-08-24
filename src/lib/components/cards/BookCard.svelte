@@ -4,9 +4,11 @@
     interface Props {
         book: Book;
         on_click: () => void;
+        on_select_genre: (genre: string) => Promise<void>;
+        on_select_tag: (tag: string) => Promise<void>;
     }
 
-    let { book, on_click }: Props = $props();
+    let { book, on_click, on_select_genre, on_select_tag }: Props = $props();
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -32,7 +34,11 @@
         <div class="book-genres">
             {#each book.genres.slice(0, 5) as genre (genre)}
                 <span class="book-genre">
-                    <button>{genre}</button>
+                    <button
+                        onclick={async () => {
+                            await on_select_genre(genre);
+                        }}>{genre}</button
+                    >
                 </span>
             {/each}
         </div>
@@ -40,7 +46,11 @@
         <div class="book-tags">
             {#each book.tags.slice(0, 5) as tag (tag)}
                 <span class="book-tag">
-                    <button>{tag}</button>
+                    <button
+                        onclick={async () => {
+                            await on_select_tag(tag);
+                        }}>{tag}</button
+                    >
                 </span>
             {/each}
         </div>
