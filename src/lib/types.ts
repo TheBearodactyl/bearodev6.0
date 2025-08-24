@@ -1,0 +1,17 @@
+export const API_BASE = "https://api.bearodactyl.dev"
+
+export interface Book {
+	_id: string;
+	title: string;
+	author: string;
+	genres: string[];
+	tags: string[];
+	rating: number;
+	status: string;
+	description: string;
+	my_thoughts: string;
+	links?: Map<string, string>;
+	cover_image: string;
+	explicit: boolean;
+	color?: string;
+}
