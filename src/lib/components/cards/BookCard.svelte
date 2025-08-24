@@ -10,20 +10,19 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<div
-    role="button"
-    tabindex="0"
-    class="book-card"
-    onclick={() => {
-        on_click()
-    }}
->
+<div class="book-card">
     <div>
+        <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
         <img
+            role="button"
+            tabindex="0"
             src={book.cover_image}
             class="cover-image"
             class:explicit={book.explicit}
             alt={`Cover image of ${book.title}`}
+            onclick={() => {
+                on_click();
+            }}
         />
     </div>
     <div class="book-info">
@@ -94,7 +93,8 @@
         filter: blur(0px);
     }
 
-    .book-tags, .book-genres {
+    .book-tags,
+    .book-genres {
         display: flex;
         flex-wrap: wrap;
         gap: 0.212rem;
