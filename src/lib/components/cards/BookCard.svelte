@@ -31,6 +31,8 @@
         <h2 class="book-title">{book.title}</h2>
         <p class="book-author">{book.author}</p>
         <div class="read-status">{book.status}</div>
+
+        <h4>Genres:</h4>
         <div class="book-genres">
             {#each book.genres.slice(0, 5) as genre (genre)}
                 <span class="book-genre">
@@ -43,6 +45,7 @@
             {/each}
         </div>
 
+        <h4>Tags:</h4>
         <div class="book-tags">
             {#each book.tags.slice(0, 5) as tag (tag)}
                 <span class="book-tag">
