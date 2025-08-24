@@ -54,6 +54,15 @@
             <span class="rating-text"> </span>
         </div>
     </div>
+
+    <div>Extra Info:</div>
+    <div class="item-metadata">
+        <h>Description:</h>
+        <p>{book.description}</p>
+
+        <h>My Thoughts:</h>
+        <p>{book.my_thoughts}</p>
+    </div>
 </div>
 
 <style>
