@@ -47,6 +47,10 @@
     });
 </script>
 
+<button
+    onclick={() => goto("/lists/read-watch/new")}
+>Add New Item</button>
+
 <input
     bind:value={title}
     onchange={async () => {

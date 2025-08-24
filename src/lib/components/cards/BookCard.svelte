@@ -75,6 +75,7 @@
     <button
         onclick={async () => {
             await delete_book(book._id.$oid);
+            
         }}>Delete</button
     >
 </div>
