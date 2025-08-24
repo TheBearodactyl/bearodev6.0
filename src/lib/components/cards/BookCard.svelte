@@ -13,7 +13,10 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<div class="book-card">
+<div
+    class="book-card"
+    style="border-color: {book.color};"
+>
     <div>
         <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
         <img
@@ -115,6 +118,7 @@
     }
 
     .cover-image.explicit:hover {
+        mix-blend-mode: normal;
         filter: blur(0px);
     }
 
@@ -123,5 +127,10 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.212rem;
+    }
+
+    .book-info {
+        mix-blend-mode: exclusion;
+        color: white;
     }
 </style>
