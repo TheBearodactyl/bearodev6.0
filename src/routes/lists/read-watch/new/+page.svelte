@@ -234,10 +234,9 @@
     <title>Create a New Book</title>
 </svelte:head>
 
-<div class="container">
+<div class="container" style="border-color: {form.color || "#FF00BB"}">
     <header class="page-header">
         <h1>Create New Book</h1>
-        <p>Add a new book to your collection</p>
     </header>
 
     <form
@@ -374,16 +373,17 @@
 
         <div class="field-group">
             <div class="checkbox-group">
-                <input
-                    id="explicit"
-                    type="checkbox"
-                    bind:checked={form.explicit}
-                    disabled={is_submitting}
-                />
                 <label
                     for="explicit"
                     class="checkbox-label"
                 >
+                    <input
+                        id="explicit"
+                        type="checkbox"
+                        bind:checked={form.explicit}
+                        disabled={is_submitting}
+                    />
+                    <span></span>
                     Explicit content
                 </label>
             </div>
@@ -409,3 +409,14 @@
         </div>
     </form>
 </div>
+
+<style>
+    .container {
+        background-color: var(--rp-surface);
+        color: var(--rp-text);
+        padding: 2rem;
+        padding-bottom: 5rem;
+        border: 4px solid var(--rp-gold);
+        border-radius: 12px;
+    }
+</style>

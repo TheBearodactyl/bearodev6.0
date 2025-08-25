@@ -1,0 +1,55 @@
+@use "sass:string";
+
+@mixin nice($inputtype) {
+    @if $inputtype != "textarea" {
+        border-radius: 99px;
+    }
+
+    border: 2px solid var(--rp-iris);
+    padding: 10px;
+    width: fit-content;
+    margin: 0.25rem;
+    background-color: var(--rp-base);
+    color: var(--rp-text);
+    transition: all 0.3s ease-out;
+
+    &:hover {
+        background-color: var(--rp-highlight-med);
+
+        @if $inputtype == "button" or $inputtype == "checkbox" or $inputtype == "select" {
+            cursor: pointer;
+        } @else if $inputtype == "text" {
+            cursor: text;
+        } @else if $inputtype == "textarea" {
+            border-radius: 12px !important;
+            cursor: text;
+        }
+    }
+}
+
+html {
+    background-color: var(--rp-base);
+}
+
+button,
+select,
+input[type="checkbox"] {
+    @include nice("button");
+}
+
+select {
+    padding-right: 12px;
+}
+
+input[type="text"],
+input[type="textarea"],
+input[type="number"],
+[type="url"] {
+    border-radius: 12px;
+
+    @include nice("text");
+}
+
+textarea {
+    @include nice("textarea");
+}
