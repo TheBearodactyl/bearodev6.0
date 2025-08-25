@@ -8,23 +8,17 @@
 </script>
 
 <div class="tags-bar">
-    <h2>Tags:</h2>
-    {#each tags as tag}
-        <button
-            onclick={() => {
-                on_click_tag(tag);
-            }}
-        >
-            {tag}
-        </button>
-    {/each}
+    <h2 class="header-label">Tags</h2>
+    <div class="tags-container">
+        {#each tags as tag}
+            <button
+                class="tag-button"
+                onclick={() => {
+                    on_click_tag(tag);
+                }}
+            >
+                {tag}
+            </button>
+        {/each}
+    </div>
 </div>
-
-<style>
-    .tags-bar {
-        display: block;
-        background-color: gainsboro;
-        width: 90%;
-        height: 5%;
-    }
-</style>

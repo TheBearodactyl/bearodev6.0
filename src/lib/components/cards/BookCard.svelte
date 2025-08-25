@@ -16,6 +16,7 @@
 <div
     class="book-card"
     style="border-color: {book.color};"
+    class:explicit={book.explicit}
 >
     <div>
         <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
@@ -82,12 +83,12 @@
     >
 </div>
 
-<style>
+<style lang="scss">
     .book-card {
         display: flex;
         flex-direction: column;
-        color: white;
-        background-color: black;
+        color: var(--rp-text);
+        background-color: var(--rp-surface);
         border-radius: 12px;
         border: 2px solid;
         border-color: pink;
@@ -95,31 +96,47 @@
         overflow: hidden;
         position: relative;
         width: 100%;
-        margin-bottom: 1rem;
-    }
+        margin-bottom: 1.5rem;
 
-    .book-card::after {
-        content: "";
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 50%;
+        ::after {
+            content: "";
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+        }
+
+        &.explicit {
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+                z-index: 5;
+                backdrop-filter: blur(40px);
+                -webkit-backdrop-filter: blur(40px);
+                transition: all 0.43s cubic-bezier(0.165, 0.84, 0.44, 1);
+                pointer-events: none;
+                will-change: backdrop-filter, opacity;
+            }
+        }
+
+        &:hover {
+            &.explicit::before {
+                opacity: 0;
+                backdrop-filter: blur(0);
+                -webkit-backdrop-filter: blur(0);
+            } 
+        }
     }
 
     .cover-image {
         width: 100%;
         height: fit-content;
         object-fit: cover;
-    }
-
-    .cover-image.explicit {
-        filter: blur(10px);
-        transition: all 0.53s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .cover-image.explicit:hover {
-        mix-blend-mode: normal;
-        filter: blur(0px);
     }
 
     .book-tags,

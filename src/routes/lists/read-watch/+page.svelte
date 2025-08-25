@@ -47,9 +47,7 @@
     });
 </script>
 
-<button
-    onclick={() => goto("/lists/read-watch/new")}
->Add New Item</button>
+<button onclick={() => goto("/lists/read-watch/new")}>Add New Item</button>
 
 <input
     bind:value={title}
@@ -60,20 +58,22 @@
     type="text"
 />
 
-<TagsBar
-    {tags}
-    on_click_tag={async (tag: string) => {
-        tags = tags.filter((t) => t !== tag);
-        items = await search_books();
-    }}
-/>
-<GenresBar
-    {genres}
-    on_click_genre={async (genre: string) => {
-        genres = genres.filter((g) => g !== genre);
-        items = await search_books();
-    }}
-/>
+<div class="filter-bars">
+    <TagsBar
+        {tags}
+        on_click_tag={async (tag: string) => {
+            tags = tags.filter((t) => t !== tag);
+            items = await search_books();
+        }}
+    />
+    <GenresBar
+        {genres}
+        on_click_genre={async (genre: string) => {
+            genres = genres.filter((g) => g !== genre);
+            items = await search_books();
+        }}
+    />
+</div>
 
 <div class="read-watch-container">
     {#each items as book}
@@ -94,12 +94,20 @@
     {/each}
 </div>
 
-<style>
+<style lang="scss">
     .read-watch-container {
-        column-count: 4;
+        column-count: 3;
         column-gap: 1rem;
         width: 100%;
         padding: 2rem;
         position: relative;
+
+        @media (max-width: 798px) {
+            column-count: 2;
+        }
+
+        @media (max-width: 412px), (max-width: 312px) {
+            column-count: 1;
+        }
     }
 </style>

@@ -8,23 +8,17 @@
 </script>
 
 <div class="tags-bar">
-    <h2>Genres:</h2>
-    {#each genres as genre}
-        <button
-            onclick={() => {
-                on_click_genre(genre);
-            }}
-        >
-            {genre}
-        </button>
-    {/each}
+    <h2 class="header-label">Genres</h2>
+    <div class="tags-container">
+        {#each genres as genre}
+            <button
+                class="tag-button"
+                onclick={() => {
+                    on_click_genre(genre);
+                }}
+            >
+                {genre}
+            </button>
+        {/each}
+    </div>
 </div>
-
-<style>
-    .tags-bar {
-        display: block;
-        background-color: gainsboro;
-        width: 90%;
-        height: 5%;
-    }
-</style>

@@ -1,0 +1,31 @@
+.tags-bar {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: fit-content;
+    background-color: var(--rp-surface);
+    color: var(--rp-text);
+    border-radius: 99px;
+}
+
+.header-label {
+    background-color: var(--rp-highlight-med);
+    border-radius: 99px;
+    padding: 12px;
+    margin-left: 1.1rem;
+}
+
+.filter-bars {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.tag-button {
+    width: fit-content;
+    height: fit-content;
+}
