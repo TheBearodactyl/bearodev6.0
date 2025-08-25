@@ -47,6 +47,8 @@
     });
 </script>
 
+<h1 class="page-header">Read/Watch List</h1>
+
 <button onclick={() => goto("/lists/read-watch/new")}>Add New Item</button>
 
 <input
@@ -110,4 +112,6 @@
             column-count: 1;
         }
     }
+
+    
 </style>

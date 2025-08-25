@@ -18,7 +18,7 @@
     style="border-color: {book.color};"
     class:explicit={book.explicit}
 >
-    <div>
+    <div class="book-cover">
         <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
         <img
             role="button"
@@ -36,6 +36,18 @@
         <h2 class="book-title">{book.title}</h2>
         <p class="book-author">{book.author}</p>
         <div class="read-status">{book.status}</div>
+
+        <div class="book-rating">
+            <span class="stars">
+                {#each Array(book.rating) as _, star}
+                    <span
+                        class="star"
+                        class:filled={star + 1 <= book.rating}>★</span
+                    >
+                {/each}
+            </span>
+            <span class="rating-text">({book.rating}/5)</span>
+        </div>
 
         <h4>Genres:</h4>
         <div class="book-genres">
@@ -62,18 +74,6 @@
                 </span>
             {/each}
         </div>
-
-        <div class="book-rating">
-            <span class="stars">
-                {#each Array(book.rating) as _, star}
-                    <span
-                        class="star"
-                        class:filled={star + 1 <= book.rating}>★</span
-                    >
-                {/each}
-            </span>
-            <span class="rating-text">({book.rating}/5)</span>
-        </div>
     </div>
 
     <button
@@ -92,7 +92,7 @@
         border-radius: 12px;
         border: 2px solid;
         border-color: pink;
-        padding: 1rem;
+        // padding: 1rem;
         overflow: hidden;
         position: relative;
         width: 100%;
@@ -129,14 +129,23 @@
                 opacity: 0;
                 backdrop-filter: blur(0);
                 -webkit-backdrop-filter: blur(0);
-            } 
+            }
         }
+    }
+
+    .book-cover {
+        line-height: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
     }
 
     .cover-image {
         width: 100%;
         height: fit-content;
         object-fit: cover;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
 
     .book-tags,
@@ -149,5 +158,6 @@
     .book-info {
         mix-blend-mode: exclusion;
         color: white;
+        margin: 1rem;
     }
 </style>
