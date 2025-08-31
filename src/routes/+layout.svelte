@@ -14,7 +14,9 @@
   />
 </svelte:head>
 
-<LangSwitcher />
+<div class="quick-buttons">
+  <LangSwitcher />
+</div>
 
 {@render children?.()}
 
@@ -27,5 +29,9 @@
 <style lang="scss">
   :global {
     @import url("/src/lib/assets/scss/styles.scss");
+  }
+
+  .quick-buttons {
+    position: sticky !important;
   }
 </style>

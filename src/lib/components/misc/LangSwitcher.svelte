@@ -13,7 +13,7 @@
   });
 </script>
 
-<div>
+<div class="locale-switcher">
   <select
     bind:value={selected_locale}
     onchange={handle_change_locale}

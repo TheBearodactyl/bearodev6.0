@@ -16,21 +16,6 @@ export interface Book {
   color?: string;
 }
 
-export interface NewBook {
-  title: string;
-  author: string;
-  genres: string[];
-  tags: string[];
-  rating: number;
-  status: string;
-  description: string;
-  my_thoughts: string;
-  links: Record<string, string>;
-  cover_image: string;
-  explicit: boolean;
-  color?: string;
-}
-
 export interface BookQuery {
   title?: string;
   author?: string;
@@ -102,4 +87,23 @@ export interface RouteItemNext {
   title?: string;
   description?: string;
   name?: string;
+}
+
+export type LocalizedString = string | Record<string, string>;
+
+export type LocalizedStringArray = string[] | LocalizedString[];
+
+export interface NewBook {
+  title: LocalizedString;
+  author: LocalizedString;
+  genres: LocalizedStringArray;
+  tags: LocalizedStringArray;
+  rating: number;
+  status: string;
+  description: LocalizedString;
+  my_thoughts: LocalizedString;
+  links: Record<string, string>;
+  cover_image: string;
+  explicit: boolean;
+  color?: string;
 }
