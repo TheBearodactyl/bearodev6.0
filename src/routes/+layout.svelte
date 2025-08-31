@@ -1,20 +1,31 @@
 <script lang="ts">
-    import favicon from "$lib/assets/favicon.svg";
+  import { page } from "$app/state";
+  import favicon from "$lib/assets/favicon.svg";
+  import LangSwitcher from "$lib/components/misc/LangSwitcher.svelte";
+  import { locales, localizeHref } from "$lib/paraglide/runtime";
 
-    let { children } = $props();
+  let { children } = $props();
 </script>
 
 <svelte:head>
-    <link
-        rel="icon"
-        href={favicon}
-    />
+  <link
+    rel="icon"
+    href={favicon}
+  />
 </svelte:head>
+
+<LangSwitcher />
 
 {@render children?.()}
 
+<div style="display: none;">
+  {#each locales as locale}
+    <a href={localizeHref(page.url.pathname, { locale })}>{locale}</a>
+  {/each}
+</div>
+
 <style lang="scss">
-    :global {
-        @import url("/src/lib/assets/scss/styles.scss");
-    }
+  :global {
+    @import url("/src/lib/assets/scss/styles.scss");
+  }
 </style>

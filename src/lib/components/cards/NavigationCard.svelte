@@ -1,42 +1,36 @@
 <script lang="ts">
-  import type { HomePageItem, RouteItemNext } from "$lib/types";
+  import type { RouteItemNext } from "$lib/types";
 
   interface Props {
     card: RouteItemNext;
   }
 
   let { card }: Props = $props();
-
-  const get_item_title = (item: RouteItemNext): string | undefined => {
-    return item.title ?? (item.name ? `titles.routes.${item.name}` : item.name_key);
-  };
 </script>
 
 <button
-  class="nav-card {card.path ? 'clickable' : ''}"
+  class="nav-card {card.path ? 'clickable' : ''} home-page-card"
   title={card.title ? card.title : "Navigation Item"}
   onclick={() => {}}
 >
   <div class="card-image-container">
     {#if card.cover_image}
-      {#if card.cover_image.endsWith("webm")}
-        <video
-          src={card.cover_image}
-          class="card-image"
-          autoplay
-          loop
-          muted
-          playsinline
-          disablepictureinpicture
-        ></video>
-        {:else}
-        <img
-          src={card.cover_image}
-          alt={`Cover for ${card.title}`}
-          class="card-image"
-          loading="lazy"
-        />
-      {/if}
+      <img
+        src={card.cover_image}
+        alt={`Cover for ${card.title}`}
+        class="card-image"
+        loading="lazy"
+      />
+    {/if}
+  </div>
+
+  <div class="card-info">
+    {#if card.title}
+      <div class="title">{card.title}</div>
+    {/if}
+
+    {#if card.description}
+      <div class="desc">{card.description}</div>
     {/if}
   </div>
 </button>

@@ -1,40 +1,16 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import HomeGallery from "$lib/components/galleries/HomeGallery.svelte";
-  import type { HomePageItem } from "$lib/types";
+  import type { HomePageItem, RouteItemNext } from "$lib/types";
+  import { m } from "$lib/paraglide/messages";
 
-  let cards: HomePageItem[] = [
+  let cards: RouteItemNext[] = [
     {
-      image: "/images/brocollie.png",
-      img_alt: "woah",
-      info: {
-        title: "woaaah",
-        description: "this is a description",
-      },
-    },
-    {
-      image: "/images/buggy.webp",
-      img_alt: "woah",
-      info: {
-        title: "woaaah",
-        description: "this is a description",
-      },
-    },
-    {
-      image: "/images/hobo.avif",
-      img_alt: "woah",
-      info: {
-        title: "woaaah",
-        description: "this is a description",
-      },
-    },
-    {
-      image: "/images/idle.gif",
-      img_alt: "woah",
-      info: {
-        title: "woaaah",
-        description: "this is a description",
-      },
+      cover_image: "/images/brocollie.png",
+      path: "",
+      name_key: "titles_routes_read-watch",
+      title: "Read/Watch List",
+      description: "stuff i've read/watched"
     },
   ];
 </script>
@@ -43,8 +19,10 @@
   <button
     onclick={() => {
       goto("/lists/read-watch");
-    }}>Read/Watch List</button
+    }}
   >
+    {m["titles_routes_read-watch"]()}
+  </button>
   <button
     onclick={() => {
       goto("/login");

@@ -3,23 +3,34 @@
     flex-direction: column;
     background-color: var(--rp-surface);
     width: 33%;
-    border-radius: 20px;
+    padding: 0;
+    border-radius: 12px;
     transition:
         width 0.72s cubic-bezier(0.165, 0.84, 0.44, 1),
         background-color 0.73s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &:hover {
-        width: 35%;
+        width: 33.5%;
         background-color: var(--rp-highlight-med);
     }
 
     .card-info {
         padding-left: 22px;
         padding-bottom: 12px;
+
+        .title {
+            font-size: x-large;
+            margin: 10px;
+        }
+
+        .desc {
+            font-size: small;
+        }
     }
 
     .card-image {
-        border-top-right-radius: 20px;
-        border-top-left-radius: 20px;
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
+        width: 100% !important;
     }
 }

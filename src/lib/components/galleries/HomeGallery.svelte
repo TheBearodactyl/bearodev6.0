@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { HomePageItem } from "$lib/types";
+  import type { HomePageItem, RouteItemNext } from "$lib/types";
   import NavigationCard from "../cards/NavigationCard.svelte";
 
   interface Props {
-    cards: HomePageItem[];
+    cards: RouteItemNext[];
   }
 
   let { cards }: Props = $props();
