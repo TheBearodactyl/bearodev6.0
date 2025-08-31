@@ -1,0 +1,9 @@
+.home-page-gallery {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    column-count: 3;
+    position: relative;
+    gap: 2rem;
+    flex-wrap: wrap;
+}

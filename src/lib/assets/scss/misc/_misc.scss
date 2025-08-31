@@ -1,16 +1,2 @@
-.page-header {
-    color: var(--rp-iris);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    font-size: clamp(2rem, 7vw, 5.5rem);
-    text-align: center;
-    margin-bottom: 3.5rem;
-    text-shadow:
-        0 0 20px rgba(196, 167, 231, 0.3),
-        0 0 40px rgba(196, 167, 231, 0.1);
-    line-height: 1.1;
-    background: linear-gradient(90deg, var(--rp-iris) 0%, var(--rp-foam) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+@use "./bars";
+@use "./typing";
