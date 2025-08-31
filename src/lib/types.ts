@@ -1,4 +1,4 @@
-export const API_BASE = "http://127.0.0.1:2379";
+export const API_BASE = "https://api.bearodactyl.dev";
 
 export interface Book {
   _id: { $oid: string };
@@ -91,7 +91,8 @@ export interface HomePageItem {
 
 export interface RouteItemNext {
   path: string;
-  name_key: string;
+  name_key?: string;
+  key: string;
   children?: RouteItemNext[];
   home_page?: boolean;
   cover_image?: string;

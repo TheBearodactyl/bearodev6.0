@@ -7,8 +7,8 @@
   let cards: RouteItemNext[] = [
     {
       cover_image: "/images/brocollie.png",
-      path: "",
-      name_key: "titles_routes_read-watch",
+      path: "/lists/read-watch",
+      key: "read-watch",
       title: "Read/Watch List",
       description: "stuff i've read/watched"
     },
